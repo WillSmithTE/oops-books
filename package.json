@@ -2,22 +2,26 @@
   "name": "bookmi",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "src/app.ts",
   "dependencies": {
+    "angular": "^1.6.4",
     "webpack": "^4.6.0",
     "@uirouter/angularjs": "^1.0.13",
     "angular-cli": "^1.0.0-beta.28.3"
   },
   "devDependencies": {
+    "@types/angular": "^1.6.16",
     "copy-webpack-plugin": "^4.5.1",
     "http-server": "^0.11.1",
+    "ts-loader": "^4.2.0",
+    "typescript": "^2.8.3",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.15",
     "webpack-dev-server": "^3.1.3"
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack src/app.js dist/bundle.js",
+    "build": "webpack src/app.ts dist/bundle.js",
     "build:prod": "npm run build -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
