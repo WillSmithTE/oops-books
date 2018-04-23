@@ -3,7 +3,7 @@ import * as angular from 'angular';
 export class HomeController {
     public static count: number = 2;
     public static CONTROLLER_NAME: string = 'HomeController';
-
+    public search = "yasssss";
     constructor() {
         HomeController.count = 2;
     }

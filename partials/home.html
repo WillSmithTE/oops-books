@@ -1,12 +1,12 @@
 <div class="centerWide">
     <h1 style="display: inline; margin: 10px">BookMi</h1>
-    <input style="width: 50%" type="text" />
+    <input ng-model="search" style="width: 50%" type="text" />
     <button>Search</button>
 </div>
 
 <div class="container" style="text-align: center">
     <nav class="navbar navbar-default centerWide">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" style="float:none">
             <a ui-sref="sell" class="nav-link homeNav">Sell</a>
             <a ui-sref="request" class="nav-link homeNav">Request</a>
             <div style="display:inline" ui-sref="login"><a class="nav-link homeNav">Sign in</a></div>
@@ -14,3 +14,5 @@
         </ul>
     </nav>
 </div>
+
+<h1>{{search}}</h1>
