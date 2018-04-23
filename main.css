@@ -1,0 +1,23 @@
+.centerWide {
+    margin: auto;
+    width: 100%;
+}
+
+.centerHalfScreen {
+    margin: auto;
+    width: 40%;
+}
+
+.homeNav {
+    padding: 5%
+}
+
+.boxed {
+    border: 1px solid grey;
+    padding: 5px;
+}
+
+button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
