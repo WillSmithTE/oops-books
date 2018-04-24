@@ -3,9 +3,16 @@ import * as angular from 'angular';
 export function routes($stateProvider: any, $urlRouterProvider: any) {
     $stateProvider
         .state('home', {
+            templateUrl: 'partials/home.html'
+        })
+        .state('home.page', {
             url: '/',
-            templateUrl: 'partials/home.html',
-            controller: 'HomeController'
+            controller: 'HomeController',
+            views: {
+                mainContent: {
+                    templateUrl: 'partials/mainPage.html'
+                }
+            }
         })
         .state('sell', {
             url: '/sell',
@@ -23,9 +30,13 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
             url: '/login',
             templateUrl: 'partials/login.html'
         })
-        .state('cart', {
+        .state('home.cart', {
             url: '/cart',
-            templateUrl: 'partials/cart.html'
+            views: {
+                mainContent: {
+                    templateUrl: 'partials/cart.html'
+                }
+            }
         })
         .state('forgotPassword', {
             url: '/forgotpassword',
