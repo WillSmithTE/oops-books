@@ -1,20 +1,20 @@
 <div class="centerWide">
     <a ui-sref="home.page"><h1 style="display: inline; margin: 10px">BookMi</h1></a>
-    <input ng-model="search" style="width: 50%" type="text" />
-    <button>Search</button>
+    <div style="width: 50%; margin: 0 auto; min-width: 400px">
+        <input ng-model="search" style="width: 80%;" type="text" />
+        <button ng-click="homeCtrl.performSearch()" style="width: 15%">Search</button>
+    </div>
 </div>
 
 <div class="container" style="text-align: center">
     <nav class="navbar navbar-default centerWide">
-        <ul class="nav navbar-nav" style="float:none">
-            <a ui-sref="sell" class="nav-link homeNav">Sell</a>
-            <a ui-sref="request" class="nav-link homeNav">Request</a>
-            <a ui-sref="login" class="nav-link homeNav">Sign in</a>
-            <a ui-sref="home.cart" class="nav-link homeNav">Cart {{count}}</a>
+        <ul class="nav navbar-nav" style="float:none; position: relative; top: 50%; transform: translateY(30%);">
+            <a ui-sref="sell" class="nav-link homeNav"><h3 style="display: inline;">Sell</h3></a>
+            <a ui-sref="request" class="nav-link homeNav"><h3 style="display: inline;">Request</h3></a>
+            <a ui-sref="login" class="nav-link homeNav"><h3 style="display: inline;">Sign in</h3></a>
+            <a ui-sref="home.cart" class="nav-link homeNav"><h3 style="display: inline;">Cart {{count}}</h3></a>
         </ul>
     </nav>
 </div>
-
-<h1>{{search}}</h1>
 
 <div ui-view ="mainContent"></div>

@@ -3,14 +3,26 @@ import * as angular from 'angular';
 export function routes($stateProvider: any, $urlRouterProvider: any) {
     $stateProvider
         .state('home', {
-            templateUrl: 'partials/home.html'
+            templateUrl: 'partials/home.html',
+            controller: 'HomeController as homeCtrl'
         })
         .state('home.page', {
             url: '/',
-            controller: 'HomeController',
+            controller: 'HomeController as homeCtrl',
             views: {
                 mainContent: {
-                    templateUrl: 'partials/mainPage.html'
+                    templateUrl: 'partials/mainPage.html',
+                    controller: 'HomeController as homeCtrl'
+                }
+            }
+        })
+        .state('home.book', {
+            url: '/:name',
+            controller: 'BookController as bookCtrl',
+            views: {
+                mainContent: {
+                    templateUrl: 'partials/book.html',
+                    controller: 'BookController as bookCtrl'
                 }
             }
         })

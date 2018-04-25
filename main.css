@@ -22,3 +22,11 @@ button {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.addToCartBtn {
+    background: linear-gradient(to right, #e1c88c, #f4f7b1);
+}
+
+.addToCartBtn:hover {
+    background: linear-gradient(to right, #e1ba8c, #f5ecb6);
+}
