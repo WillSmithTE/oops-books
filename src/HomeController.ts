@@ -6,24 +6,29 @@ export interface HomeScope extends ng.IScope {
 
 export class HomeController {
     public static CONTROLLER_NAME: string = 'HomeController';
-    public readonly books: Book[];
+    public books: Book[];
     public readonly $scope: HomeScope;
     public readonly user: {};
+    public searchString: string = '';
     public static readonly imgLink: string = 'https://yt3.ggpht.com/a-/AJLlDp2zsCjOyN-jAOmiKEvW1R6WtABhvxJgB1zvgQ=s900-mo-c-c0xffffffff-rj-k-no';
     private $state: any;
 
     constructor($scope: HomeScope, $state: any) {
         this.$scope = $scope;
         this.books = HomeController.makeMockBooks(10);
-        this.$scope.books = this.books;
         this.$state = $state;
     }
 
     public performSearch() {
+        this.books = this.books.filter((book) => book.getName().indexOf(this.searchString) !== -1);
         this.$state.go('home.page');
     }
 
     public addToCart() {
+    }
+
+    public getBooks() {
+        return this.books;
     }
 
     private static makeMockBooks(count: number): Book[] {
