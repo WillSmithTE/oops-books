@@ -1,30 +1,49 @@
 import { Book } from './Book';
+import { User } from './User';
 
-export interface HomeScope extends ng.IScope {
+export interface RootScope extends ng.IScope {
     books: Book[];
 }
 
-export class HomeController {
-    public static CONTROLLER_NAME: string = 'HomeController';
+export class RootController {
+    public static CONTROLLER_NAME: string = 'RootController';
     public books: Book[];
-    public readonly $scope: HomeScope;
-    public readonly user: {};
+    public readonly $scope: RootScope;
+    public readonly user: User;
     public searchString: string = '';
+    public isLoggedIn: boolean = false;
     public static readonly imgLink: string = 'https://yt3.ggpht.com/a-/AJLlDp2zsCjOyN-jAOmiKEvW1R6WtABhvxJgB1zvgQ=s900-mo-c-c0xffffffff-rj-k-no';
     private $state: any;
+    private $uibModal: any;
 
-    constructor($scope: HomeScope, $state: any) {
+    constructor($scope: RootScope, $state: any, $uibModal: any) {
+        this.user = new User(1, 'user 1', '');
         this.$scope = $scope;
-        this.books = HomeController.makeMockBooks(10);
+        this.books = RootController.makeMockBooks(8);
         this.$state = $state;
+        this.$uibModal = $uibModal;
     }
 
     public performSearch() {
         this.books = this.books.filter((book) => book.getName().indexOf(this.searchString) !== -1);
-        this.$state.go('home.page');
+        this.$state.go('root.home');
     }
 
-    public addToCart() {
+    public addToCart(book: Book) {
+        this.user.addToCart(book);
+    }
+
+    public login() {
+        this.isLoggedIn = true;
+        this.$state.go('root.home');
+    }
+
+    public getUser() {
+        return this.user;
+    }
+
+    public submitRequest() {
+
     }
 
     public getBooks() {
@@ -34,7 +53,7 @@ export class HomeController {
     private static makeMockBooks(count: number): Book[] {
         let booksToReturn: Book[] =[];
         for (let i = 0; i < count; i++) {
-            booksToReturn[i] = (new Book(i + 1, `Book ${i + 1}`, `Author ${i + 1}`, (i +1) *3, '', HomeController.imgLink));
+            booksToReturn[i] = (new Book(i + 1, `Book ${i + 1}`, `Author ${i + 1}`, (i +1) *3, '', RootController.imgLink));
         }
         booksToReturn[count] = new Book(count + 1, 'Cracking the Coding Interview', 'Gayle Laakmann McDowell', 20, `I am not a recruiter. I am a software engineer. And as such, I know what it's like to be asked to whip up brilliant algorithms on the spot and then write flawless code on a whiteboard. I've been through this as a candidate and as an interviewer. 
 
@@ -48,8 +67,6 @@ export class HomeController {
     }
 }
 
-export function initHomeController(angular: any) {
-    angular.module('app').controller(HomeController.CONTROLLER_NAME, ['$scope', '$state', HomeController]);
+export function initRootController(angular: any) {
+    angular.module('app').controller(RootController.CONTROLLER_NAME, ['$scope', '$state', RootController]);
 }
-
-

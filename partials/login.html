@@ -1,5 +1,5 @@
 <div class="centerHalfScreen" style="text-align: center">
-    <a ui-sref="home.page" ><h1>BookMi</h1></a>
+    <a ui-sref="root.home" ><h1>BookMi</h1></a>
     <div class="boxed">
         <h3>Sign in</h3>
         <form>
@@ -8,7 +8,7 @@
             <div><label for="password">Password</label></div>
             <div><input id="password" type="password"/></div>
         </form>
-        <div><button>Sign In</button></div>
+        <div><button on-click="{{rootCtrl.login()}}">Sign In</button></div>
         <div><a ui-sref="forgotPassword">Forgot Your Password?</a></div>
         <div><input type="checkbox"> Keep me signed in.<br></div>
         </div>

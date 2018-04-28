@@ -1,20 +1,31 @@
 <div class="centerWide">
-    <a ui-sref="home.page"><h1 style="display: inline; margin: 10px">BookMi</h1></a>
+    <a ui-sref="root.home">
+        <h1 style="display: inline; margin: 10px">BookMi</h1>
+    </a>
     <div style="width: 50%; margin: 0 auto; min-width: 400px">
-        <input ng-model="homeCtrl.searchString" style="width: 80%;" type="text" />
-        <button ng-click="homeCtrl.performSearch()" style="width: 15%">Search</button>
+        <input ng-model="rootCtrl.searchString" style="width: 80%;" type="text" />
+        <button ng-click="rootCtrl.performSearch()" style="width: 15%">Search</button>
     </div>
 </div>
 
 <div class="container" style="text-align: center">
     <nav class="navbar navbar-default centerWide">
-        <ul class="nav navbar-nav" style="float:none; position: relative; top: 50%; transform: translateY(30%);">
-            <a ui-sref="sell" class="nav-link homeNav"><h3 style="display: inline;">Sell</h3></a>
-            <a ui-sref="request" class="nav-link homeNav"><h3 style="display: inline;">Request</h3></a>
-            <a ui-sref="login" class="nav-link homeNav"><h3 style="display: inline;">Sign in</h3></a>
-            <a ui-sref="home.cart" class="nav-link homeNav"><h3 style="display: inline;">Cart {{count}}</h3></a>
-        </ul>
+        <a ui-sref="root.sell" class="nav-link homeNav">
+            <h3 style="display: inline;">Sell</h3>
+        </a>
+        <a ui-sref="root.request" class="nav-link homeNav">
+            <h3 style="display: inline;">Request</h3>
+        </a>
+        <a ng-if="rootCtrl.isLoggedIn" ui-sref="account" class="nav-link homeNav">
+            <h3 style="display: inline;">Account</h3>
+        </a>
+        <a ng-if="!rootCtrl.isLoggedIn" ui-sref="login" class="nav-link homeNav">
+            <h3 style="display: inline;">Sign in</h3>
+        </a>
+        <a ui-sref="root.cart" class="nav-link homeNav">
+            <h3 style="display: inline;">Cart {{count}}</h3>
+        </a>
     </nav>
 </div>
 
-<div ui-view ="mainContent"></div>
+<div ui-view="mainContent"></div>

@@ -1,3 +1,26 @@
-<div class="centerHalfScreen" style="text-align: center">
-        <a ui-sref="home.page"><h1>BookMi</h1></a>
-</div>    
+<div class="centerHalfScreen boxed" style="text-align: center">
+        <div style="margin-left: 30px; margin-top: 30px;">
+                <h1>Request a book</h1>
+                <form id="requestForm">
+                        <div style="margin-top: 20px">
+                                <label for="name">Name</label>
+                        </div>
+                        <div>
+                                <input required id="name" type="text" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                                <label for="author">Author</label>
+                        </div>
+                        <div>
+                                <input required id="author" type="text" />
+                        </div>
+                        <div style="margin-top: 20px;">
+                                <label for="reason">State Your Reason</label>
+                        </div>
+                        <div>
+                                <textarea cols="30" rows="7" maxlength="250" form="requestForm" id="reason" />
+                        </div>
+                        <input style="margin-top: 20px;" ng-click="{{rootCtrl.submitRequest()}}" type="submit" />
+                </form>
+        </div>
+</div>

@@ -2,23 +2,23 @@ import * as angular from 'angular';
 
 export function routes($stateProvider: any, $urlRouterProvider: any) {
     $stateProvider
-        .state('home', {
+        .state('root', {
             templateUrl: 'partials/home.html',
-            controller: 'HomeController as homeCtrl'
+            controller: 'RootController as rootCtrl'
         })
-        .state('home.page', {
+        .state('root.home', {
             url: '/',
-            controller: 'HomeController as homeCtrl',
+            controller: 'RootController as rootCtrl',
             views: {
                 mainContent: {
                     templateUrl: 'partials/mainPage.html',
-                    controller: 'HomeController as homeCtrl'
+                    controller: 'RootController as rootCtrl'
                 }
             }
         })
-        .state('home.book', {
+        .state('root.book', {
             url: '/:name',
-            controller: 'BookController as bookCtrl',
+            controller: 'RootController as rootCtrl',
             views: {
                 mainContent: {
                     templateUrl: 'partials/book.html',
@@ -26,13 +26,21 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
                 }
             }
         })
-        .state('sell', {
+        .state('root.sell', {
             url: '/sell',
-            templateUrl: 'partials/sell.html'
+            views: {
+                mainContent: {
+                    templateUrl: 'partials/sell.html'
+                }
+            }
         })
-        .state('request', {
+        .state('root.request', {
             url: '/request',
-            templateUrl: 'partials/request.html'
+            views: {
+                mainContent: {
+                    templateUrl: 'partials/request.html'
+                }
+            }
         })
         .state('account', {
             url: '/account',
@@ -42,7 +50,7 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
             url: '/login',
             templateUrl: 'partials/login.html'
         })
-        .state('home.cart', {
+        .state('root.cart', {
             url: '/cart',
             views: {
                 mainContent: {
