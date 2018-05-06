@@ -1,4 +1,4 @@
-import { Book } from "./Book";
+import { Book } from "../model/Book";
 
 export class BookController {
     public static readonly CONTROLLER_NAME = 'BookController';

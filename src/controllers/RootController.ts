@@ -1,5 +1,5 @@
-import { Book } from './Book';
-import { User } from './User';
+import { Book } from '../model/Book';
+import { User } from '../model/User';
 
 export interface RootScope extends ng.IScope {
     books: Book[];
@@ -40,6 +40,10 @@ export class RootController {
 
     public getUser() {
         return this.user;
+    }
+
+    public removeFromCart(item: Book) {
+        this.user.removeFromCart(item);
     }
 
     public submitRequest() {

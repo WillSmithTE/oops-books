@@ -17,6 +17,13 @@ export class User {
         this.cart.push(book);
     }
 
+    public removeFromCart(book: Book) {
+        const cartIds = this.cart.map((book) => book.getId());
+        const bookIndex = cartIds.indexOf(book.getId());
+        this.cart.splice(bookIndex, 1);
+        console.log(this.cart);
+    }
+
     public getCart() {
         return this.cart;
     }

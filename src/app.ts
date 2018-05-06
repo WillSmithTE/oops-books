@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 import { routes } from './routes';
-import { initBookController } from './BookController';
-import { initRootController } from './RootController';
+import { initBookController } from './controllers/BookController';
+import { initRootController } from './controllers/RootController';
 
 const app = angular.module('app', ['ui.router']);
 app.config(routes);
