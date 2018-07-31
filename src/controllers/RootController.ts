@@ -25,8 +25,9 @@ export class RootController {
     }
 
     public performSearch() {
-        this.books = this.books.filter((book) => book.getName().indexOf(this.searchString) !== -1);
+        this.books = this.books.filter(RootController.compareBookNameAndAuthor(this.searchString));
         this.$state.go('root.home');
+        console.log(this.books);
     }
 
     public addToCart(book: Book) {
@@ -54,10 +55,17 @@ export class RootController {
         return this.books;
     }
 
+    private static compareBookNameAndAuthor(searchString: string): (book: Book) => boolean {
+        return (book: Book) => {
+            return (book.getName().toLowerCase().indexOf(searchString.toLowerCase()) !== -1) ||
+                book.getAuthor().toLowerCase().indexOf(searchString.toLowerCase()) !== -1;
+        };
+    }
+
     private static makeMockBooks(count: number): Book[] {
-        let booksToReturn: Book[] =[];
+        let booksToReturn: Book[] = [];
         for (let i = 0; i < count; i++) {
-            booksToReturn[i] = (new Book(i + 1, `Book ${i + 1}`, `Author ${i + 1}`, (i +1) *3, '', RootController.imgLink));
+            booksToReturn[i] = (new Book(i + 1, `Book ${i + 1}`, `Author ${i + 1}`, (i + 1) * 3, '', RootController.imgLink));
         }
         booksToReturn[count] = new Book(count + 1, 'Cracking the Coding Interview', 'Gayle Laakmann McDowell', 20, `I am not a recruiter. I am a software engineer. And as such, I know what it's like to be asked to whip up brilliant algorithms on the spot and then write flawless code on a whiteboard. I've been through this as a candidate and as an interviewer. 
 
@@ -65,8 +73,8 @@ export class RootController {
         
         Learn how to uncover the hints and hidden details in a question, discover how to break down a problem into manageable chunks, develop techniques to unstick yourself when stuck, learn (or re-learn) core computer science concepts, and practice on 189 interview questions and solutions.
         
-        These interview questions are real; they are not pulled out of computer science textbooks. They reflect what's truly being asked at the top companies, so that you can be as prepared as possible.`, 'https://images-na.ssl-images-amazon.com/images/I/41J6k0AL6yL._SX348_BO1,204,203,200_.jpg' );
-    
+        These interview questions are real; they are not pulled out of computer science textbooks. They reflect what's truly being asked at the top companies, so that you can be as prepared as possible.`, 'https://images-na.ssl-images-amazon.com/images/I/41J6k0AL6yL._SX348_BO1,204,203,200_.jpg');
+
         return booksToReturn;
     }
 }

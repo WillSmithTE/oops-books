@@ -17,7 +17,7 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
             }
         })
         .state('root.book', {
-            url: '/:name',
+            url: '/book',
             controller: 'RootController as rootCtrl',
             views: {
                 mainContent: {
