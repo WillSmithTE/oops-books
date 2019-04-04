@@ -19,5 +19,16 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  mode: 'development'
+  mode: 'development',
+  devServer: {
+    port: 3000
+  },
+  externals: {
+    'request': 'request'
+  },
+  node: {
+    net: 'empty',
+    tls: 'empty',
+    dns: 'empty'
+  }
 };

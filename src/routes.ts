@@ -1,4 +1,6 @@
 import * as angular from 'angular';
+import { SellController } from './controllers/SellController';
+import { AuthController } from './controllers/AuthController';
 
 export function routes($stateProvider: any, $urlRouterProvider: any) {
     $stateProvider
@@ -30,7 +32,8 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
             url: '/sell',
             views: {
                 mainContent: {
-                    templateUrl: 'partials/sell.html'
+                    templateUrl: 'partials/sell.html',
+                    controller: SellController.CONTROLLER_NAME + ' as sellCtrl'
                 }
             }
         })
@@ -42,13 +45,27 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
                 }
             }
         })
+        .state('root.about', {
+            url: '/about',
+            views: {
+                mainContent: {
+                    templateUrl: 'partials/about.html'
+                }
+            }
+        })
         .state('account', {
             url: '/account',
             templateUrl: 'partials/account.html'
         })
         .state('login', {
             url: '/login',
-            templateUrl: 'partials/login.html'
+            templateUrl: 'partials/login.html',
+            controller: `${AuthController.CONTROLLER_NAME} as authCtrl`
+        })
+        .state('register', {
+            url: '/register',
+            templateUrl: 'partials/register.html',
+            controller: `AuthController as authCtrl`
         })
         .state('root.cart', {
             url: '/cart',
@@ -61,10 +78,7 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
         .state('forgotPassword', {
             url: '/forgotpassword',
             templateUrl: 'partials/forgotPassword.html'
-        })
-        .state('register', {
-            url: '/register',
-            templateUrl: 'partials/register.html'
         });
+
     $urlRouterProvider.otherwise('/');
 }

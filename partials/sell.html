@@ -1,0 +1,18 @@
+<div class="centerHalfScreen boxed" style="text-align: center">
+    <form ng-submit="sellCtrl.confirm()">
+        <div>
+            <div><label>Select book name from list (search by name or author)</label></div>
+            <div style="padding: 10px;">
+                <input style="margin-bottom: 5px;" type="text" ng-model="searchText" /><br />
+                <select ng-model="sellCtrl.selectedBook"
+                    ng-options="book.name for book in rootCtrl.books | filter: searchText"></select>
+            </div>
+        </div>
+        <div>
+            <div><label>Quantity</label></div>
+            <input type="text" ng-model="sellCtrl.quantity" />
+        </div>
+
+        <input style="margin-top: 5px;" type="submit" on-click="rootCtrl.confirmSell()" value="Confirm" />
+    </form>
+</div>

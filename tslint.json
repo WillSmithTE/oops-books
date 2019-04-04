@@ -2,6 +2,7 @@
     "rules": {
         "no-consecutive-blank-lines": true,
         "whitespace": true,
-        "no-unused-variable": true
+        "no-unused-variable": true,
+        "quotemark": [ true, "single" ]
     }
 }

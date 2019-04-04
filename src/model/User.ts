@@ -1,4 +1,17 @@
-import { Book } from "./Book";
+import { Book } from './Book';
+
+export interface BaseUser {
+    email: string;
+    password: string;
+}
+
+export interface NamedUser extends BaseUser {
+    name: string;
+}
+
+export interface UserSignupData extends NamedUser {
+    confirmPassword: string;
+}
 
 export class User {
     private id: number;

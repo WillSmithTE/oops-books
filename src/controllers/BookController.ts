@@ -1,4 +1,5 @@
-import { Book } from "../model/Book";
+import { IAngularStatic } from 'angular';
+import { Book } from '../model/Book';
 
 export class BookController {
     public static readonly CONTROLLER_NAME = 'BookController';
@@ -20,6 +21,6 @@ export class BookController {
     }
 }
 
-export function initBookController(angular: any) {
+export function initBookController(angular: IAngularStatic) {
     angular.module('app').controller(BookController.CONTROLLER_NAME, BookController);
 }
