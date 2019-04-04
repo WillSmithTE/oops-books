@@ -4,11 +4,11 @@
         <h3>Sign in</h3>
         <form>
             <div><label style="text-align: center;" for="email">Email</label></div>
-            <div><input id="email" type="text"/></div>
+            <div><input ng-model="authCtrl.username" id="email" type="text"/></div>
             <div><label for="password">Password</label></div>
-            <div><input id="password" type="password"/></div>
+            <div><input ng-model="authCtrl.password" id="password" type="password"/></div>
         </form>
-        <div><button on-click="authCtrl.signin()">Sign In</button></div>
+        <div><button ng-click="authCtrl.signin()">Sign In</button></div>
         <div><a ui-sref="forgotPassword">Forgot Your Password?</a></div>
         <div><input type="checkbox"> Keep me signed in.<br></div>
     </div>

@@ -1,10 +1,16 @@
 import { IAngularStatic } from 'angular';
 import { CognitoUserPool, CognitoUserAttribute, NodeCallback, ISignUpResult, CognitoUser, ICognitoUserData, AuthenticationDetails, CognitoUserSession } from 'amazon-cognito-identity-js';
 import { UserSignupData, BaseUser, User } from '../model/User';
-import { get } from 'superagent';
+import { get, post } from 'superagent';
+import { sign } from 'jsonwebtoken';
+
+const REGISTER_PATH: string = '/register',
+    LOGIN_PATH: string = '/login';
 
 export class AuthService {
     public static SERVICE_NAME = 'AuthService';
+
+    private secret: string = 'secret';
 
     constructor() {
     }
@@ -18,7 +24,38 @@ export class AuthService {
             (users) => console.error(users),
             (error) => console.error(error)
         );
-        
+
+    }
+
+    public register(username: string, password: string): void {
+        const token: string = sign({ data: password }, this.secret);
+        const registrationRequest = {
+            username,
+            password: token
+        };
+        post(REGISTER_PATH)
+            .send(registrationRequest)
+            .then(
+                (value) => console.log('Registration Success'),
+                (error) => console.error('Registration Failed: ' + error)
+            );
+    }
+
+    public signin(username: string, password: string): void {
+        console.error({ username, password });
+        const token: string = sign({ data: password }, this.secret);
+        console.error({token});
+        const signinRequest = {
+            username,
+            password: token
+        };
+
+        post(LOGIN_PATH)
+            .send(signinRequest)
+            .then(
+                (value) => console.log('Login Success'),
+                (error) => console.error('Login failed: '+ error)
+            );
     }
 
     public static signinUser(userPool: CognitoUserPool, userData: BaseUser) {

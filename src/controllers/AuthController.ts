@@ -2,9 +2,12 @@ import { IAngularStatic } from 'angular';
 import { CognitoUserPool, CognitoUserAttribute, NodeCallback, ISignUpResult } from 'amazon-cognito-identity-js';
 import { UserSignupData, BaseUser } from '../model/User';
 import { AuthService } from '../services/AuthService';
+import { sign } from 'jsonwebtoken';
 
 export class AuthController {
     public static CONTROLLER_NAME: string = 'AuthController';
+    private username: string;
+    private password: string
 
     constructor(authService: AuthService) {
         this.authService = authService;
@@ -19,16 +22,25 @@ export class AuthController {
     private userSigninData: BaseUser;
     private authService: AuthService;
 
+    public getUserName(): string {
+        return this.username;
+    }
+
+    public getPassword(): string {
+        return this.password;
+    }
+
     public logUsers(): void {
         this.authService.getUsers();
     }
 
-    public register(): void {
-        // this.authService.signupUser(this.userPool, this.userSignupData);
+    public register(username: string, password: string): void {
+        this.authService.register(username, password);
     }
 
     public signin(): void {
-        // this.authService.signinUser(this.userPool, this.userSigninData);
+        console.error({ username: this.username, password: this.password });
+        this.authService.signin(this.username, this.password);
     }
 }
 
