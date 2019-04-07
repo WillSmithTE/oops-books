@@ -13,7 +13,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js']
   },
   output: {
     filename: 'bundle.js',
@@ -23,9 +23,9 @@ module.exports = {
   devServer: {
     port: 3000
   },
-  externals: {
-    'request': 'request'
-  },
+  // externals: {
+  //   'request': 'request'
+  // },
   node: {
     net: 'empty',
     tls: 'empty',

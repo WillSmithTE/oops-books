@@ -2,13 +2,25 @@ import * as angular from 'angular';
 import { SellController } from './controllers/SellController';
 import { AuthController } from './controllers/AuthController';
 
+export const ROOT_STATE = 'root',
+HOME_STATE = `${ROOT_STATE}.home`,
+BOOK_STATE = `${ROOT_STATE}.book`,
+SELL_STATE = `${ROOT_STATE}.sell`,
+REQUEST_STATE = `${ROOT_STATE}.request`,
+ABOUT_STATE = `${ROOT_STATE}.about`,
+CART_STATE = `${ROOT_STATE}.cart`,
+ACCOUNT_STATE = `account`,
+LOGIN_STATE = `login`,
+REGISTER_STATE = `register`,
+FORGOT_PASSWORD_STATE = `forgotPassword`;
+
 export function routes($stateProvider: any, $urlRouterProvider: any) {
     $stateProvider
-        .state('root', {
+        .state(ROOT_STATE, {
             templateUrl: 'partials/home.html',
             controller: 'RootController as rootCtrl'
         })
-        .state('root.home', {
+        .state(HOME_STATE, {
             url: '/',
             controller: 'RootController as rootCtrl',
             views: {
@@ -18,7 +30,7 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
                 }
             }
         })
-        .state('root.book', {
+        .state(BOOK_STATE, {
             url: '/book',
             controller: 'RootController as rootCtrl',
             views: {
@@ -28,7 +40,7 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
                 }
             }
         })
-        .state('root.sell', {
+        .state(SELL_STATE, {
             url: '/sell',
             views: {
                 mainContent: {
@@ -37,7 +49,7 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
                 }
             }
         })
-        .state('root.request', {
+        .state(REQUEST_STATE, {
             url: '/request',
             views: {
                 mainContent: {
@@ -45,7 +57,7 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
                 }
             }
         })
-        .state('root.about', {
+        .state(ABOUT_STATE, {
             url: '/about',
             views: {
                 mainContent: {
@@ -53,21 +65,21 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
                 }
             }
         })
-        .state('account', {
+        .state(ACCOUNT_STATE, {
             url: '/account',
             templateUrl: 'partials/account.html'
         })
-        .state('login', {
+        .state(LOGIN_STATE, {
             url: '/login',
             templateUrl: 'partials/login.html',
             controller: `${AuthController.CONTROLLER_NAME} as authCtrl`
         })
-        .state('register', {
+        .state(REGISTER_STATE, {
             url: '/register',
             templateUrl: 'partials/register.html',
             controller: `AuthController as authCtrl`
         })
-        .state('root.cart', {
+        .state(CART_STATE, {
             url: '/cart',
             views: {
                 mainContent: {
@@ -75,7 +87,7 @@ export function routes($stateProvider: any, $urlRouterProvider: any) {
                 }
             }
         })
-        .state('forgotPassword', {
+        .state(FORGOT_PASSWORD_STATE, {
             url: '/forgotpassword',
             templateUrl: 'partials/forgotPassword.html'
         });

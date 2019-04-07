@@ -1,30 +1,29 @@
 import { IAngularStatic } from 'angular';
 import { CognitoUserPool, CognitoUserAttribute, NodeCallback, ISignUpResult } from 'amazon-cognito-identity-js';
-import { UserSignupData, BaseUser } from '../model/User';
 import { AuthService } from '../services/AuthService';
-import { sign } from 'jsonwebtoken';
+import { RegistrationRequest } from '../model/RegistrationRequest';
+import { Location } from '../model/Location';
+import { RegisterData } from '../model/RegisterData';
 
 export class AuthController {
     public static CONTROLLER_NAME: string = 'AuthController';
-    private username: string;
+
+    public registerForm: {};
+    public registerSchema: {};
+    public registerModel: RegisterData = {};
+
+    private name: string;
     private password: string
+    private location: Location;
+    private email: string;
 
     constructor(authService: AuthService) {
         this.authService = authService;
+        this.registerForm = this.makeRegisterForm();
+        this.registerSchema = AuthController.makeRegisterSchema();
     }
 
-    private poolData = {
-        UserPoolId: 'ap-southeast-2_wdQuIDkHd',
-        ClientId: 'jbje511agcinicb65vf7is0ne'
-    };
-    private userPool: CognitoUserPool = new CognitoUserPool(this.poolData);
-    private userSignupData: UserSignupData;
-    private userSigninData: BaseUser;
     private authService: AuthService;
-
-    public getUserName(): string {
-        return this.username;
-    }
 
     public getPassword(): string {
         return this.password;
@@ -34,13 +33,71 @@ export class AuthController {
         this.authService.getUsers();
     }
 
-    public register(username: string, password: string): void {
-        this.authService.register(username, password);
+    public register(): void {
+        this.authService.register(RegistrationRequest.createFromObject(this.registerModel));
     }
 
     public signin(): void {
-        console.error({ username: this.username, password: this.password });
-        this.authService.signin(this.username, this.password);
+        this.authService.signin(this.email, this.password);
+    }
+
+    private makeRegisterForm(): {} {
+        return [
+            'name',
+            'email',
+            {
+                key: 'password',
+                type: 'password',
+                validationMessage: {
+                    passwordMatch: 'Passwords must match'
+                },
+                $validators: {
+                    passwordMatch: (password) => password === this.registerModel.confirmPassword
+                }
+            },
+            {
+                key: 'confirmPassword',
+                type: 'password',
+                validationMessage: {
+                    passwordMatch: 'Passwords must match'
+                },
+                $validators: {
+                    passwordMatch: (confirmPassword) => confirmPassword === this.registerModel.password
+                }
+            }
+        ];
+    }
+
+    private static makeRegisterSchema(): {} {
+        return {
+            type: 'object',
+            properties: {
+                'name': {
+                    title: 'Name',
+                    type: 'string'
+                },
+                'email': {
+                    title: 'Email',
+                    type: 'string',
+                    pattern: '^\\S+@\\S+$'
+                },
+                'password': {
+                    title: 'Password',
+                    type: 'string',
+                    minLength: 8
+                },
+                'confirmPassword': {
+                    title: 'Confirm Password',
+                    type: 'string'
+                }
+            },
+            required: [
+                'name',
+                'email',
+                'password',
+                'confirmPassword'
+            ]
+        };
     }
 }
 

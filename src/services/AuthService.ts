@@ -1,18 +1,22 @@
 import { IAngularStatic } from 'angular';
-import { CognitoUserPool, CognitoUserAttribute, NodeCallback, ISignUpResult, CognitoUser, ICognitoUserData, AuthenticationDetails, CognitoUserSession } from 'amazon-cognito-identity-js';
-import { UserSignupData, BaseUser, User } from '../model/User';
 import { get, post } from 'superagent';
-import { sign } from 'jsonwebtoken';
+import { RegistrationRequest } from '../model/RegistrationRequest';
+import { generate } from 'password-hash';
+import { Response, ResponseStatus } from '../model/Response';
+import { LOGIN_STATE } from '../routes';
 
-const REGISTER_PATH: string = '/register',
-    LOGIN_PATH: string = '/login';
+const pathGenerator = (url: string) => `http://localhost:8080/${url}`,
+    REGISTER_PATH: string = pathGenerator('auth/register'),
+    LOGIN_PATH: string = pathGenerator('auth/login');
 
 export class AuthService {
     public static SERVICE_NAME = 'AuthService';
 
-    private secret: string = 'secret';
+    private authToken: string;
+    private $state;
 
-    constructor() {
+    constructor($state) {
+        this.$state = $state;
     }
 
     // public static getUserSession(): CognitoUserSession {
@@ -27,50 +31,41 @@ export class AuthService {
 
     }
 
-    public register(username: string, password: string): void {
-        const token: string = sign({ data: password }, this.secret);
-        const registrationRequest = {
-            username,
-            password: token
-        };
+    public register(registrationRequest: RegistrationRequest): void {
         post(REGISTER_PATH)
+            .set('Content-Type', 'application/json')
             .send(registrationRequest)
             .then(
-                (value) => console.log('Registration Success'),
+                (response: any) => {
+                    if (response.body.status === ResponseStatus[ResponseStatus.FAIL]) {
+                        alert('Registration failed: ' + response.body.body);
+                    } else {
+                        alert('Registration Success');
+                        this.$state.go(LOGIN_STATE);
+                    }
+                },
                 (error) => console.error('Registration Failed: ' + error)
             );
     }
 
     public signin(username: string, password: string): void {
-        console.error({ username, password });
-        const token: string = sign({ data: password }, this.secret);
-        console.error({token});
+        const hashedPwd = generate(password);
         const signinRequest = {
             username,
-            password: token
+            password: hashedPwd
         };
 
         post(LOGIN_PATH)
             .send(signinRequest)
             .then(
-                (value) => console.log('Login Success'),
-                (error) => console.error('Login failed: '+ error)
+                (response) => {
+                    console.log('Login Success');
+                },
+                (error) => console.error('Login failed: ' + error)
             );
-    }
-
-    public static signinUser(userPool: CognitoUserPool, userData: BaseUser) {
-        const user: CognitoUser = new CognitoUser({ Username: userData.email, Pool: userPool });
-
-        user.authenticateUser(new AuthenticationDetails({ Username: userData.email, Password: userData.password }), {
-            onSuccess: (result: CognitoUserSession) => {
-                alert('successful login');
-                // this.userSession = result;
-            },
-            onFailure: (error) => alert(`Login failed: ${error}`)
-        });
     }
 }
 
 export function initAuthService(angular: IAngularStatic) {
-    angular.module('app').service(AuthService.SERVICE_NAME, ['$http', AuthService]);
+    angular.module('app').service(AuthService.SERVICE_NAME, ['$state', AuthService]);
 }

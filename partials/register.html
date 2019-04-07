@@ -1,17 +1,22 @@
 <div class="centerHalfScreen" style="text-align: center">
-    <a ui-sref="root.home"><h1>NotManyBooks</h1></a>
+    <a ui-sref="root.home">
+        <h1>NotManyBooks</h1>
+    </a>
     <div class="boxed">
         <h3>Create account</h3>
         <form>
             <div><label style="text-align: center;" for="name">Your name</label></div>
-            <div><input ng-model="authCtrl.userSignupData.name" type="text" id="name" autocomplete="name"/></div>
+            <div><input ng-model="authCtrl.registerModel.name" type="text" id="name" autocomplete="name" /></div>
             <div><label style="text-align: center;" for="email">Email</label></div>
-            <div><input ng-model="authCtrl.userSignupData.email" type="text" id="email" autocomplete="email"/></div>
+            <div><input ng-model="authCtrl.registerModel.email" type="text" id="email" autocomplete="email" /></div>
             <div><label style="text-align: center;" for="password">Password</label></div>
-            <div><input ng-model="authCtrl.userSignupData.password" type="password" id="password"/></div>
+            <div><input ng-model="authCtrl.registerModel.password" type="password" id="password" /></div>
             <div><label style="text-align: center;" for="confirmPassword">Confirm Password</label></div>
-            <div><input ng-model="authCtrl.userSignupData.confirmPassword" type="password" id="confirmPassword"/></div>
-            <div><input type="submit" ng-click="authCtrl.register()" value="Create your account" style="margin-top: 10px;"/></div>
+            <div><input ng-model="authCtrl.registerModel.confirmPassword" type="password" id="confirmPassword" /></div>
+            <div><input type="submit" ng-click="authCtrl.register()" value="Create your account"
+                    style="margin-top: 10px;" /></div>
+        </form>
+        <form sf-schema="authCtrl.registerSchema" sf-form="authCtrl.registerForm" sf-model="authCtrl.registerModel">
         </form>
         <div style="margin-top:15px">
             <svg height="10" width="90%">

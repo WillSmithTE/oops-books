@@ -1,6 +1,8 @@
 import { IAngularStatic } from 'angular';
 import { Book } from '../model/Book';
 import { User } from '../model/User';
+import { Location } from '../model/Location';
+import { RegistrationRequest } from '../model/RegistrationRequest';
 
 export interface RootScope extends ng.IScope {
     books: Book[];
@@ -18,7 +20,7 @@ export class RootController {
     private $uibModal: any;
 
     constructor($scope: RootScope, $state: any, $uibModal: any) {
-        this.user = new User(1, 'user 1', '');
+        this.user = new User(new RegistrationRequest('user 1', '', '', new Location('sydney','aus',2070)));
         this.$scope = $scope;
         this.books = RootController.makeMockBooks(8);
         this.$state = $state;
