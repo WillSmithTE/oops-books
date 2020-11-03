@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/BookMi/static/css/main.ab7136cd.chunk.css",
+    "main.js": "/BookMi/static/js/main.8df3bb0e.chunk.js",
+    "main.js.map": "/BookMi/static/js/main.8df3bb0e.chunk.js.map",
+    "runtime-main.js": "/BookMi/static/js/runtime-main.233335c1.js",
+    "runtime-main.js.map": "/BookMi/static/js/runtime-main.233335c1.js.map",
+    "static/js/2.24cd2b12.chunk.js": "/BookMi/static/js/2.24cd2b12.chunk.js",
+    "static/js/2.24cd2b12.chunk.js.map": "/BookMi/static/js/2.24cd2b12.chunk.js.map",
+    "static/js/3.f9b80786.chunk.js": "/BookMi/static/js/3.f9b80786.chunk.js",
+    "static/js/3.f9b80786.chunk.js.map": "/BookMi/static/js/3.f9b80786.chunk.js.map",
+    "index.html": "/BookMi/index.html",
+    "static/css/main.ab7136cd.chunk.css.map": "/BookMi/static/css/main.ab7136cd.chunk.css.map",
+    "static/js/2.24cd2b12.chunk.js.LICENSE.txt": "/BookMi/static/js/2.24cd2b12.chunk.js.LICENSE.txt",
+    "static/media/logo.103b5fa1.svg": "/BookMi/static/media/logo.103b5fa1.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.233335c1.js",
+    "static/js/2.24cd2b12.chunk.js",
+    "static/css/main.ab7136cd.chunk.css",
+    "static/js/main.8df3bb0e.chunk.js"
+  ]
+}
