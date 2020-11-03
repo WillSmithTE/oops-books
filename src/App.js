@@ -1,24 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import {Navbar} from './Navbar';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
 
 function App() {
-  return (
+  const classes = useStyles();
+
+  return (<>
+    <Navbar/>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <Typography variant="h3" className={classes.title}>
+        Books of the week
+        </Typography>
       </header>
     </div>
+    </>
   );
 }
 
