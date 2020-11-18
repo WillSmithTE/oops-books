@@ -1,31 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
-import {Navbar} from './Navbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import {Dashboard} from './Dashboard';
-
-const useStyles = makeStyles((theme) => ({
-  title: {
-    marginBottom: '20px',
-    marginTop: '20px'
-  },
-}));
+import Navbar from './Navbar';
+import {
+  Route,
+  Switch
+} from 'react-router-dom';
+import {HomePage} from './HomePage';
+import {Login} from './login/Login';
+import Signup from './signup/Signup';
+import {BASE_URL, ACCESS_TOKEN} from './util/constants';
+import {useState} from 'react';
+import Alert from 'react-s-alert';
 
 function App() {
-  const classes = useStyles();
+  const [authenticated, setAuthenticated] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem(ACCESS_TOKEN);
+    this.setState({
+      authenticated: false,
+      currentUser: null
+    });
+    Alert.success("You're safely logged out!");
+  }
+
+  if (loading) {
+    return <h1>loading...</h1>;
+  }
 
   return (<>
-    <Navbar/>
-    <div className="App">
-      <header className="App-header">
-        <Typography variant="h3" className={classes.title}>
-          Books of the week
-        </Typography>
-        <Dashboard/>
-      </header>
-    </div>
-    </>
+    <Navbar />
+    <Switch>
+      <Route path={BASE_URL + "/login"} render={(props) => <Login authenticated={authenticated} {...props} />} />
+      <Route path={BASE_URL + "/signup"} render={(props) => <Signup authenticated={authenticated} {...props} />}></Route>
+      <Route render={(props) => <HomePage {...props} />}></Route>
+    </Switch>
+  </>
   );
 }
 

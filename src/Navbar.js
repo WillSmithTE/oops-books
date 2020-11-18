@@ -1,5 +1,5 @@
-import { AppBar } from '@material-ui/core';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import {AppBar} from '@material-ui/core';
+import {fade, makeStyles} from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import React from 'react';
@@ -8,6 +8,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import {Link} from 'react-router-dom';
+import {BASE_URL} from './util/constants';
+import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,9 +61,12 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  button: {
+    color: 'white'
+  }
 }));
 
-export const Navbar = () => {
+const Navbar = ({history}) => {
   const classes = useStyles();
 
   return <AppBar position="static">
@@ -81,10 +87,13 @@ export const Navbar = () => {
             root: classes.inputRoot,
             input: classes.inputInput,
           }}
-          inputProps={{ 'aria-label': 'search' }}
+          inputProps={{'aria-label': 'search'}}
         />
       </div>
-      <Button color="inherit">Login</Button>
+      {/* <Link role="button" to={BASE_URL + '/login'} color="inherit" className={classes.button}>LOGIN</Link> */}
+      <Button onClick={() => history.push(BASE_URL + '/login')} color="inherit">Login</Button>
     </Toolbar>
   </AppBar>;
 }
+
+export default withRouter(Navbar);
