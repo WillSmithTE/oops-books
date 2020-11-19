@@ -9,7 +9,6 @@ import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import {Link} from 'react-router-dom';
-import {BASE_URL} from './util/constants';
 import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({

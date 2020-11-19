@@ -4,12 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { BASE_URL } from './util/constants';
 
-console.error({BASE_URL})
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename={BASE_URL}>
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>,

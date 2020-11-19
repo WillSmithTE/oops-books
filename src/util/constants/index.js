@@ -9,5 +9,3 @@ export const GOOGLE_AUTH_URL = API_BASE_URL + '/oauth2/authorize/google?redirect
 export const FACEBOOK_AUTH_URL = API_BASE_URL + '/oauth2/authorize/facebook?redirect_uri=' + OAUTH2_REDIRECT_URI;
 export const GITHUB_AUTH_URL = API_BASE_URL + '/oauth2/authorize/github?redirect_uri=' + OAUTH2_REDIRECT_URI;
 
-export const BASE_URL = process.env.PUBLIC_URL;
-// export const BASE_URL = '/BookMi';

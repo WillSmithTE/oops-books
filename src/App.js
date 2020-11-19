@@ -8,7 +8,7 @@ import {
 import {HomePage} from './HomePage';
 import {Login} from './login/Login';
 import Signup from './signup/Signup';
-import {BASE_URL, ACCESS_TOKEN} from './util/constants';
+import {ACCESS_TOKEN} from './util/constants';
 import {useState} from 'react';
 import Alert from 'react-s-alert';
 
