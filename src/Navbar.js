@@ -91,7 +91,7 @@ const Navbar = ({history}) => {
         />
       </div>
       {/* <Link role="button" to={BASE_URL + '/login'} color="inherit" className={classes.button}>LOGIN</Link> */}
-      <Button onClick={() => history.push(BASE_URL + '/login')} color="inherit">Login</Button>
+      <Button onClick={() => history.push('/login')} color="inherit">Login</Button>
     </Toolbar>
   </AppBar>;
 }

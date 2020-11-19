@@ -33,8 +33,8 @@ function App() {
   return (<>
     <Navbar />
     <Switch>
-      <Route path={BASE_URL + "/login"} render={(props) => <Login authenticated={authenticated} {...props} />} />
-      <Route path={BASE_URL + "/signup"} render={(props) => <Signup authenticated={authenticated} {...props} />}></Route>
+      <Route path={"/login"} render={(props) => <Login authenticated={authenticated} {...props} />} />
+      <Route path={"/signup"} render={(props) => <Signup authenticated={authenticated} {...props} />}></Route>
       <Route render={(props) => <HomePage {...props} />}></Route>
     </Switch>
   </>
