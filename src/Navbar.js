@@ -89,8 +89,7 @@ const Navbar = ({history}) => {
           inputProps={{'aria-label': 'search'}}
         />
       </div>
-      <Link role="button" to={'/login'} color="inherit" className={classes.button}>LOGIN</Link>
-      {/* <Button onClick={() => history.push('/login')} color="inherit">Login</Button> */}
+      <Button onClick={() => history.push('/login')} color="inherit">Login</Button>
     </Toolbar>
   </AppBar>;
 }
