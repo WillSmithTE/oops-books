@@ -8,7 +8,7 @@ import { BASE_URL } from './util/constants';
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter basename={BASE_URL}>
+    <HashRouter>
       <App />
     </HashRouter>
   </React.StrictMode>,
