@@ -8,6 +8,7 @@ import {
 import {HomePage} from './HomePage';
 import {Login} from './login/Login';
 import Signup from './signup/Signup';
+import { Footer } from './Footer';
 import {ACCESS_TOKEN} from './util/constants';
 import {useState} from 'react';
 import Alert from 'react-s-alert';
@@ -37,6 +38,7 @@ function App() {
       <Route path={"/signup"} render={(props) => <Signup authenticated={authenticated} {...props} />}></Route>
       <Route render={(props) => <HomePage {...props} />}></Route>
     </Switch>
+    <Footer />
   </>
   );
 }

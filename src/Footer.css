@@ -1,0 +1,14 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+}
+
+.version {
+    margin-right: auto;
+  }
+
+.email {
+    margin-left: auto;
+  }
