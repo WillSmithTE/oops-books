@@ -1,8 +1,12 @@
 .footer {
-    position: absolute;
     bottom: 0;
-    display: flex;
+    position: fixed;
     width: 100%;
+    background-color: lightgray;
+}
+
+.footerFlex {
+    display: flex;
 }
 
 .version {
