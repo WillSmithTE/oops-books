@@ -74,7 +74,7 @@ const Navbar = ({history}) => {
         <MenuIcon />
       </IconButton>
       <Typography variant="h6" className={classes.title}>
-        BookMi
+        Oops Books
       </Typography>
       <div className={classes.search}>
         <div className={classes.searchIcon}>
