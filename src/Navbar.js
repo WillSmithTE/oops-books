@@ -73,7 +73,7 @@ const Navbar = ({history}) => {
       <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
         <MenuIcon />
       </IconButton>
-      <Typography variant="h6" className={classes.title}>
+      <Typography onClick={() => history.push('/')} variant="h6" className={classes.title}>
         Oops Books
       </Typography>
       <div className={classes.search}>
