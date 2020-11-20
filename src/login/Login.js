@@ -33,7 +33,7 @@ export class Login extends Component {
         return (
             <div className="login-container">
                 <div className="login-content">
-                    <h1 className="login-title">Login to Oops Books</h1>
+                    <h1 className="login-title">Log in to Oops Books</h1>
                     <SocialLogin />
                     <div className="or-separator">
                         <span className="or-text">OR</span>
