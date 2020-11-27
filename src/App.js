@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './Navbar';
 import {
@@ -30,6 +29,8 @@ function App() {
   if (loading) {
     return <h1>loading...</h1>;
   }
+
+  console.error(window.location.origin)
 
   return (<>
     <Navbar />

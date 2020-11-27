@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import {Link} from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({

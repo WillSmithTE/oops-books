@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Login.css';
-import { GOOGLE_AUTH_URL, FACEBOOK_AUTH_URL, GITHUB_AUTH_URL, ACCESS_TOKEN } from '../util/constants';
+import { GOOGLE_AUTH_URL, ACCESS_TOKEN } from '../util/constants';
 import { login } from '../util/APIUtils';
 import { Link, Redirect } from 'react-router-dom'
 import googleLogo from '../img/google-logo.png';
