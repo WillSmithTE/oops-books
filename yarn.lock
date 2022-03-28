@@ -7567,9 +7567,9 @@ minimatch@3.0.4, minimatch@^3.0.4:
     brace-expansion "^1.1.7"
 
 minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 minipass-collect@^1.0.2:
   version "1.0.2"
@@ -9515,11 +9515,6 @@ react-spinners@^0.9.0:
   integrity sha512-+x6eD8tn/aYLdxZjNW7fSR1uoAXLb9qq6TFYZR1dFweJvckcf/HfP8Pa/cy5HOvB/cvI4JgrYXTjh2Me3S6Now==
   dependencies:
     "@emotion/core" "^10.0.15"
-
-react-sticky-footer@^0.1.0-rc3:
-  version "0.1.0-rc3"
-  resolved "https://registry.yarnpkg.com/react-sticky-footer/-/react-sticky-footer-0.1.0-rc3.tgz#47137e332cafcf49a48561894aa410cca683b3af"
-  integrity sha512-FKXTCQxLoRhSC0ReEbpE52jqzMcLSYcSJjPQrx8spDGBDp3IWiyo7c1Slibsut4UmHLWG6UUA1sUCDmSAFU43Q==
 
 react-transition-group@^4.4.0:
   version "4.4.1"
